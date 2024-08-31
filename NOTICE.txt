@@ -1,0 +1,6 @@
+Apache Karaf Application Demo
+
+Copyright 2012-2024 Savoir Technologies, Inc.
+
+This product includes software developed by
+Savoir Technologies, Inc. (http://www.savoirtech.com/).
