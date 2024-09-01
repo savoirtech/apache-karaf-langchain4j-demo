@@ -45,12 +45,12 @@ public class AIResourceImpl implements AIResource {
     @Produces("application/json")
     @POST
     public AIResponse generate(AIRequest AIRequest) {
-        LOGGER.info("Got order: {}, {}, {}", AIRequest.getId(), AIRequest.getSku(), AIRequest.getQuantity());
+        LOGGER.info("Got request: {}, {}, {}", AIRequest.getId(), AIRequest.getPlugin(), AIRequest.getPrompt());
         try {
-            ExecutorPlugin executorPlugin = knowledgeBase.getPlugin(AIRequest.getSku());
-            return new AIResponse(executorPlugin.generate());
+            ExecutorPlugin executorPlugin = knowledgeBase.getPlugin(AIRequest.getPlugin());
+            return new AIResponse(executorPlugin.generate(AIRequest.getPrompt()));
         } catch (Exception exception) {
-            LOGGER.error("Unknown sku");
+            LOGGER.error("Unknown plugin");
         }
         return null;
     }

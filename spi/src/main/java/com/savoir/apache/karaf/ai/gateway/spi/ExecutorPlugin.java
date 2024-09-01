@@ -24,5 +24,5 @@ public interface ExecutorPlugin {
      */
     String describe();
 
-    String generate();
+    String generate(String prompt);
 }

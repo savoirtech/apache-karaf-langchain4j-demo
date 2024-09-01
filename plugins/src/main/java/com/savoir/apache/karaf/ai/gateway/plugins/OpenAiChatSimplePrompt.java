@@ -31,8 +31,8 @@ public class OpenAiChatSimplePrompt implements ExecutorPlugin {
     }
 
     @Override
-    public String generate() {
-        return model.generate("Tell me a joke about Java");
+    public String generate(String prompt) {
+        return model.generate(prompt);
     }
 }
 

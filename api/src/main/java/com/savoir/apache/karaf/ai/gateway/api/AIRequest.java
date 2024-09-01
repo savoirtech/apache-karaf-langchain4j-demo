@@ -25,9 +25,9 @@ public class AIRequest {
     @JsonProperty
     private Long id;
     @JsonProperty
-    private String sku;
+    private String plugin;
     @JsonProperty
-    private Long quantity;
+    private String prompt;
 
 
 
@@ -35,23 +35,23 @@ public class AIRequest {
         return id;
     }
 
-    public String getSku() {
-        return sku;
+    public String getPlugin() {
+        return plugin;
     }
 
-    public Long getQuantity() {
-        return quantity;
+    public String getPrompt() {
+        return prompt;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setSku(String sku) {
-        this.sku = sku;
+    public void setPlugin(String plugin) {
+        this.plugin = plugin;
     }
 
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
     }
 }

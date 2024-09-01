@@ -43,7 +43,7 @@ public class DemoPlugin implements ExecutorPlugin {
     }
 
     @Override
-    public String generate() {
-        return "Sample generate";
+    public String generate(String prompt) {
+        return "Sample generate for prompt: " + prompt;
     }
 }

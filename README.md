@@ -39,6 +39,42 @@ descriptor. Here our developers can manage the dependencies of the
 overall application, ensuring a smooth runtime experience. Our itests
 module contains KarafTestSupport to help automate wiring testing.
 
+## Demo Setup:
+
+Set JAVA_HOME and MAVEN_HOME, adding them to the system PATH.
+
+For our demo, we’ll use Java 17.
+
+Download Apache Karaf 4.4.6, extract the kit, and start the runtime from
+the bin folder.
+
+To build the demo, run the following command:
+
+``` bash
+mvn clean install
+```
+
+This will result in a reactor summary similar to below:
+
+``` bash
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache-Karaf-LangChain4J-AI-DEMO 1.0.0-SNAPSHOT:
+[INFO]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO ................... SUCCESS [  0.156 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: api ............ SUCCESS [  0.937 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: spi ............ SUCCESS [  0.151 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: plugins ........ SUCCESS [  6.403 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: impl ........... SUCCESS [  0.217 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-features-file SUCCESS [  0.051 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-feature-project-itests SUCCESS [ 36.615 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  44.917 s
+[INFO] Finished at: 2024-09-01T15:36:23-02:30
+[INFO] ------------------------------------------------------------------------
+```
+
 ## Installation:
 
 ``` bash
@@ -74,17 +110,37 @@ http://localhost:8181/cxf/
 
 ### Test our webservice:
 
+Our first test will be to verify that our demo plugin is wired, and
+responds to the request.
+
 ``` bash
 curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
 --header 'Content-Type: application/json' \
 --data-raw '
 {
   "id": 1234567890,
-  "sku": "demo",
-  "quantity": 1
+  "plugin": "demo",
+  "prompt": "test"
 }'
 ```
 
 ``` bash
-{"description":"This is a demo plugin."}
+{"response":"Sample generate for prompt: test"}
+```
+
+Next we will send a request to the openAiChatSimplePrompt plugin.
+
+``` bash
+curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
+--header 'Content-Type: application/json' \
+--data-raw '
+{
+  "id": 1234567890,
+  "plugin": "openAiChatSimplePrompt",
+  "prompt": "Tell a joke about Java."
+}'
+```
+
+``` bash
+{"response":"Why did the Java developer go broke?\n\nBecause he couldn't C# his way out of a for loop!"}
 ```

@@ -17,17 +17,17 @@ package com.savoir.apache.karaf.ai.gateway.api;
 
 public class AIResponse {
 
-    private String description;
+    private String response;
 
-    public AIResponse(String descrition) {
-        this.description = descrition;
+    public AIResponse(String response) {
+        this.response = response;
     }
 
-    public String getDescription() {
-        return description;
+    public String getResponse() {
+        return response;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setResponse(String response) {
+        this.response = response;
     }
 }
