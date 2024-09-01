@@ -1,13 +1,16 @@
 # Apache Karaf LangChain4J Application Demo
 
-In this demo we’ll build an API Gateway Service which allows our users
-to utilize various Generative API services.
+In this demo we’ll build an [API Gateway
+Service](https://microservices.io/patterns/apigateway.html) which allows
+our users to utilize various Generative API services.
 
-To implement this pattern we’ll use Apache Karaf as our runtime
-container, Apache CXF as our JAX-RS webservice implementation,
-Savoirtech’s EOS library to implement a Keyed-Whiteboard
-plugin-architecture, and LangChain4J to integrate various Generative API
-Services.
+To implement this pattern we’ll use [Apache
+Karaf](https://karaf.apache.org/) as our runtime container, [Apache
+CXF](https://cxf.apache.org/) as our JAX-RS webservice implementation,
+Savoirtech’s [EOS library](https://github.com/savoirtech/eos) to
+implement a Keyed-Whiteboard plugin-architecture, and
+[LangChain4J](https://docs.langchain4j.dev/) to integrate various
+Generative API Services.
 
 ## Architecture Overview:
 
