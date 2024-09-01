@@ -32,7 +32,7 @@
     <artifactId>application-impl</artifactId>
     <packaging>bundle</packaging>
 
-    <name>Apache-Karaf-LangChain4J-AI-DEMO :: karaf-feature-project-impl</name>
+    <name>Apache-Karaf-LangChain4J-AI-DEMO :: impl</name>
     <description>A sample project for learning features files</description>
 
     <dependencies>

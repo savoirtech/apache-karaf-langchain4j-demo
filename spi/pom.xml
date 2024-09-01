@@ -32,7 +32,7 @@
     <artifactId>application-spi</artifactId>
     <packaging>bundle</packaging>
 
-    <name>Apache-Karaf-LangChain4J-AI-DEMO :: karaf-feature-project-spi</name>
+    <name>Apache-Karaf-LangChain4J-AI-DEMO :: spi</name>
     <description>A sample project for learning features files</description>
 
     <dependencies>

@@ -36,9 +36,9 @@ public class DemoTest extends KarafTestSupport {
 
         assertFeatureInstalled("application-all-demo");
 
-        //assertBundleInstalled("application-api");
-        //assertBundleInstalled("application-spi");
-        //assertBundleInstalled("application-impl");
-        //assertBundleInstalled("application-plugins");
+        assertBundleInstalled("application-api");
+        assertBundleInstalled("application-spi");
+        assertBundleInstalled("application-impl");
+        assertBundleInstalled("application-plugins");
     }
 }
