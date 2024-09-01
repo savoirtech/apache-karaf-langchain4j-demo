@@ -24,5 +24,10 @@ public interface ExecutorPlugin {
      */
     String describe();
 
+    /**
+     * This method takes in a text prompt, and returns generated text.
+     * @param prompt submission.
+     * @return generated text
+     */
     String generate(String prompt);
 }

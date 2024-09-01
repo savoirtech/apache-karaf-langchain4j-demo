@@ -39,6 +39,114 @@ descriptor. Here our developers can manage the dependencies of the
 overall application, ensuring a smooth runtime experience. Our itests
 module contains KarafTestSupport to help automate wiring testing.
 
+## Code Review:
+
+### API
+
+The Application Programming Interface module contains our user facing
+interface. Note that we do not directly expose LangChain4J structures to
+end users OR structure of AI Services, our clients do not need to be
+concerned with those implementation details.
+
+``` java
+public interface AIResource {
+    AIResponse generate(AIRequest AIRequest);
+}
+```
+
+### SPI
+
+The Service Provider Interface module contains our ExecutorPlugin
+interface.
+
+``` java
+public interface ExecutorPlugin {
+
+    /**
+     * This method returns a human-readable description of the plugin purpose
+     * @return String description.
+     */
+    String describe();
+
+    /**
+     * This method takes in a text prompt, and returns generated text.
+     * @param prompt submission.
+     * @return generated text
+     */
+    String generate(String prompt);
+}
+```
+
+### Plugins
+
+A demo plugin has been created to show how the ExecutorPlugin SPI may be
+implemented. A second plugin was created to show how a simple prompt
+workflow can be implemented with OpenAI.
+
+#### Demo Plugin:
+
+``` java
+public class DemoPlugin implements ExecutorPlugin {
+
+    public DemoPlugin() {
+        //
+    }
+
+    @Override
+    public String describe() {
+        return "This is a demo plugin.";
+    }
+
+    @Override
+    public String generate(String prompt) {
+        return "Sample generate for prompt: " + prompt;
+    }
+}
+```
+
+#### OpenAiChatSimplePrompt Plugin:
+
+``` java
+public class OpenAiChatSimplePrompt implements ExecutorPlugin {
+
+    ChatLanguageModel model;
+
+    public OpenAiChatSimplePrompt() {
+        model = OpenAiChatModel.withApiKey("demo");
+    }
+
+    @Override
+    public String describe() {
+        return "This is an OpenAi Chat Simple Prompt plugin.";
+    }
+
+    @Override
+    public String generate(String prompt) {
+        return model.generate(prompt);
+    }
+}
+```
+
+### Impl
+
+At the core of our service we implement generic workflows using our
+defined plugin. Our service will query a local knowledge base to find
+registered plugin, if it does not exist a suitable error is may be
+thrown.
+
+``` java
+public AIResponse generate(AIRequest AIRequest) {
+    LOGGER.info("Got request: {}, {}, {}", AIRequest.getId(), AIRequest.getPlugin(), AIRequest.getPrompt());
+    try {
+        ExecutorPlugin executorPlugin = knowledgeBase.getPlugin(AIRequest.getPlugin());
+        return new AIResponse(executorPlugin.generate(AIRequest.getPrompt()));
+    } catch (Exception exception) {
+        LOGGER.error("Unknown plugin");
+    }
+    return null;
+ }
+```
+
 ## Demo Setup:
 
 Set JAVA_HOME and MAVEN_HOME, adding them to the system PATH.
