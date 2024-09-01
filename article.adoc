@@ -3,6 +3,8 @@
 
 In this demo we'll build an https://microservices.io/patterns/apigateway.html[API Gateway Service] which allows our users to utilize various Generative API services.
 
+image::./assets/images/APIGateway.png[alt=APIGateway,width=480,height=640,align="center"]
+
 To implement this pattern we'll use https://karaf.apache.org/[Apache Karaf] as our runtime container, https://cxf.apache.org/[Apache CXF] as our JAX-RS webservice implementation, Savoirtech's https://github.com/savoirtech/eos[EOS library] to implement a Keyed-Whiteboard plugin-architecture, and https://docs.langchain4j.dev/[LangChain4J] to integrate various Generative API Services.
 
 === Architecture Overview:

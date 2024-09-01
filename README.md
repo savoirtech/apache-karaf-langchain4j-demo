@@ -4,6 +4,10 @@ In this demo we’ll build an [API Gateway
 Service](https://microservices.io/patterns/apigateway.html) which allows
 our users to utilize various Generative API services.
 
+<figure>
+<img src="./assets/images/APIGateway.png" alt="APIGateway" />
+</figure>
+
 To implement this pattern we’ll use [Apache
 Karaf](https://karaf.apache.org/) as our runtime container, [Apache
 CXF](https://cxf.apache.org/) as our JAX-RS webservice implementation,
