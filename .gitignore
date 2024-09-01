@@ -17,3 +17,5 @@ atlassian-ide-plugin.xml
 
 # Mac files
 .DS_Store
+
+article.xml
