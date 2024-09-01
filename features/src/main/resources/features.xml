@@ -22,7 +22,6 @@
 
     <feature name="_application-deps" version="${project.version}">
         <requirement>osgi.service;effective:=active;filter:=(objectClass=org.osgi.service.http.HttpService)</requirement>
-        <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/2.1.1</bundle>
         <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
         <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
         <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
@@ -41,8 +40,6 @@
         <conditional>
             <condition>cxf-jaxrs</condition>
             <feature version="${project.version}">_application-deps</feature>
-            <bundle dependency="true">wrap:mvn:dev.langchain4j/langchain4j-open-ai/${langchain4j.version}</bundle>
-            <bundle dependency="true">wrap:mvn:dev.langchain4j/langchain4j-core/${langchain4j.version}</bundle>
             <bundle dependency="true">mvn:com.google.code.gson/gson/2.10.1</bundle>
             <bundle dependency="true">wrap:mvn:com.knuddels/jtokkit/1.1.0</bundle>
             <bundle start-level="85">mvn:com.savoir/application-api/${project.version}</bundle>
