@@ -9,6 +9,8 @@ To implement this pattern we'll use https://karaf.apache.org/[Apache Karaf] as o
 
 When working with microservices we implement an API Gateway Service to simplify clients accessing many down stream services via a single entry point. This service can then either directly proxy to a requested service, or handle the orchestration of multiple services required for the call.
 
+image::./assets/images/KeyedWhiteboard.png[alt=KeyedWhiteboard,width=480,height=640,align="center"]
+
 A Keyed-Whiteboard plugin architecture allows developers to encapsulate specific functionality into discrete deployable units of code. In our demo we will assign each plugin a specific Generative AI service to provide services upon. Our end users will only need to know which plugin they desire to use, but not the specifics (or API KEYS) to use them. In Enterprise development teams, this leads to an expert group being able to manage these assets in a consistent manner.
 
 LangChain4J eases interaction with LLMs and Vector Stores, providing a toolbox for common LLM operations. Utilizing LangChain4J we can implement plugin logic for prompt templating, chat memory management, output parsing, or higher level patterns such as AI Service and Retrieval Augmented Generation (RAG).

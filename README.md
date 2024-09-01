@@ -20,6 +20,10 @@ point. This service can then either directly proxy to a requested
 service, or handle the orchestration of multiple services required for
 the call.
 
+<figure>
+<img src="./assets/images/KeyedWhiteboard.png" alt="KeyedWhiteboard" />
+</figure>
+
 A Keyed-Whiteboard plugin architecture allows developers to encapsulate
 specific functionality into discrete deployable units of code. In our
 demo we will assign each plugin a specific Generative AI service to
