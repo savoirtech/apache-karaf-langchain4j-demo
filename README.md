@@ -216,7 +216,7 @@ karaf@root()>
 http://localhost:8181/cxf/
 ```
 
-### Test our webservice:
+## Test our webservice:
 
 Our first test will be to verify that our demo plugin is wired, and
 responds to the request.
@@ -252,3 +252,20 @@ curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
 ``` bash
 {"response":"Why did the Java developer go broke?\n\nBecause he couldn't C# his way out of a for loop!"}
 ```
+
+# About the Authors
+
+[Jamie
+Goodyear](https://github.com/savoirtech/blogs/blob/main/authors/JamieGoodyear.md)
+
+# Reaching Out
+
+Please do not hesitate to reach out with questions and comments, here on
+the Blog, or through the Savoir Technologies website at
+<https://www.savoirtech.com>.
+
+# With Thanks
+
+Thank you to the Apache Karaf, and LangChain4J communities.
+
+\(c\) 2024 Savoir Technologies
