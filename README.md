@@ -24,10 +24,6 @@ point. This service can then either directly proxy to a requested
 service, or handle the orchestration of multiple services required for
 the call.
 
-<figure>
-<img src="./assets/images/KeyedWhiteboard.png" alt="KeyedWhiteboard" />
-</figure>
-
 A Keyed-Whiteboard plugin architecture allows developers to encapsulate
 specific functionality into discrete deployable units of code. In our
 demo we will assign each plugin a specific Generative AI service to
@@ -35,6 +31,10 @@ provide services upon. Our end users will only need to know which plugin
 they desire to use, but not the specifics (or API KEYS) to use them. In
 Enterprise development teams, this leads to an expert group being able
 to manage these assets in a consistent manner.
+
+<figure>
+<img src="./assets/images/KeyedWhiteboard.png" alt="KeyedWhiteboard" />
+</figure>
 
 LangChain4J eases interaction with LLMs and Vector Stores, providing a
 toolbox for common LLM operations. Utilizing LangChain4J we can
@@ -52,8 +52,8 @@ module contains KarafTestSupport to help automate wiring testing.
 ### API
 
 The Application Programming Interface module contains our user facing
-interface. Note that we do not directly expose LangChain4J structures to
-end users OR structure of AI Services, our clients do not need to be
+interface. Note that we do not directly expose LangChain4J OR AI
+Services structures to end users, our clients do not need to be
 concerned with those implementation details.
 
 ``` java
@@ -65,7 +65,8 @@ public interface AIResource {
 ### SPI
 
 The Service Provider Interface module contains our ExecutorPlugin
-interface.
+interface. Developers will implement this interface for each service
+workflow.
 
 ``` java
 public interface ExecutorPlugin {
@@ -134,6 +135,13 @@ public class OpenAiChatSimplePrompt implements ExecutorPlugin {
     }
 }
 ```
+
+#### Note to Developers
+
+As not all libraries for AI Service integration are OSGi-Ready, in our
+demo we embed their dependencies into the plugin bundle (see maven
+bundle plugin configuration). This simplifies resolution, and runtime
+wiring at the low cost of a larger bundle jar.
 
 ### Impl
 
@@ -240,11 +248,17 @@ curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
 }'
 ```
 
+Our demo plugin received the 'test' prompt input and returned a canned
+response.
+
 ``` bash
 {"response":"Sample generate for prompt: test"}
 ```
 
 Next we will send a request to the openAiChatSimplePrompt plugin.
+
+In the prompt field we supply a request for the plugin to generate a
+joke about Java.
 
 ``` bash
 curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
@@ -257,9 +271,26 @@ curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
 }'
 ```
 
+Our plugin talks to OpenAI, and returns a response:
+
 ``` bash
 {"response":"Why did the Java developer go broke?\n\nBecause he couldn't C# his way out of a for loop!"}
 ```
+
+## Future Work:
+
+Our API Gateway Service currently contains a demo plugin to show control
+flow to developers, and a simple text based prompt for OpenAI.
+Developers can take this demo and extend it by implementing new plugins
+for various Generative AI systems (LangChain4J can help in this effort).
+Given our plugin architecture, each of these integrations can be managed
+independently & deployed in Apache Karaf.
+
+### Note to Developers
+
+Changes the API/SPI will need to be reflected on implemented plugins.
+When adding methods which are not supported by particular AI services,
+one can have that plugin return an appropriate error.
 
 # About the Authors
 
