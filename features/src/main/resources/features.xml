@@ -27,9 +27,9 @@
         <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
         <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
         <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
-        <bundle dependency="true">mvn:com.google.guava/guava/18.0</bundle>
-        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/3.4</bundle>
-        <bundle dependency="true">mvn:com.savoirtech.eos/eos-core/1.1.0</bundle>
+        <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
+        <bundle dependency="true">mvn:com.savoirtech.eos/eos-core/${eos.version}</bundle>
     </feature>
 
     <feature name="application-all-demo" version='${project.version}'>
@@ -40,8 +40,8 @@
         <conditional>
             <condition>cxf-jaxrs</condition>
             <feature version="${project.version}">_application-deps</feature>
-            <bundle dependency="true">mvn:com.google.code.gson/gson/2.10.1</bundle>
-            <bundle dependency="true">wrap:mvn:com.knuddels/jtokkit/1.1.0</bundle>
+            <bundle dependency="true">mvn:com.google.code.gson/gson/${gson.version}</bundle>
+            <bundle dependency="true">wrap:mvn:com.knuddels/jtokkit/${jtokkit.version}</bundle>
             <bundle start-level="85">mvn:com.savoir/application-api/${project.version}</bundle>
             <bundle start-level="85">mvn:com.savoir/application-spi/${project.version}</bundle>
             <bundle start-level="85">mvn:com.savoir/application-plugins/${project.version}</bundle>
