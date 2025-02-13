@@ -32,7 +32,7 @@ public class OpenAiChatSimplePrompt implements ExecutorPlugin {
 
     @Override
     public String generate(String prompt) {
-        return model.generate(prompt);
+        return model.chat(prompt);
     }
 }
 

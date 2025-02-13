@@ -26,7 +26,7 @@
     <parent>
         <artifactId>apache-karaf-ai</artifactId>
         <groupId>com.savoir</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>application-itests</artifactId>

@@ -46,6 +46,7 @@
             <bundle start-level="85">mvn:com.savoir/application-spi/${project.version}</bundle>
             <bundle start-level="85">mvn:com.savoir/application-plugins/${project.version}</bundle>
             <bundle start-level="85">mvn:com.savoir/application-impl/${project.version}</bundle>
+            <bundle start-level="85">mvn:com.savoir/application-command/${project.version}</bundle>
         </conditional>
 
     </feature>

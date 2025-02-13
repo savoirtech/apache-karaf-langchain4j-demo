@@ -42,4 +42,50 @@
         </service-properties>
     </service>
 
+    <bean id="llama32" class="com.savoir.apache.karaf.ai.gateway.plugins.OllamaAiChatSimplePrompt">
+        <argument value="llama3.2"/>
+        <argument value="http://127.0.0.1:11434"/>
+    </bean>
+
+    <service ref="llama32" interface="com.savoir.apache.karaf.ai.gateway.spi.ExecutorPlugin">
+        <service-properties>
+            <entry key="pluginType" value="llama32"/>
+        </service-properties>
+    </service>
+
+    <bean id="mistral" class="com.savoir.apache.karaf.ai.gateway.plugins.OllamaAiChatSimplePrompt">
+        <argument value="mistral"/>
+        <argument value="http://127.0.0.1:11434"/>
+    </bean>
+
+    <service ref="mistral" interface="com.savoir.apache.karaf.ai.gateway.spi.ExecutorPlugin">
+        <service-properties>
+            <entry key="pluginType" value="mistral"/>
+        </service-properties>
+    </service>
+
+    <!--
+    <bean id="fastlane" class="com.savoir.apache.karaf.ai.gateway.plugins.OllamaAiChatSimplePrompt">
+        <argument value="llama3.2"/>
+        <argument value="http://192.168.50.81:11434"/>
+    </bean>
+
+    <service ref="fastlane" interface="com.savoir.apache.karaf.ai.gateway.spi.ExecutorPlugin">
+        <service-properties>
+            <entry key="pluginType" value="fastlane"/>
+        </service-properties>
+    </service>
+
+    <bean id="slowlane" class="com.savoir.apache.karaf.ai.gateway.plugins.OllamaAiChatSimplePrompt">
+        <argument value="llama3.2"/>
+        <argument value="http://192.168.50.29:11434"/>
+    </bean>
+
+    <service ref="slowlane" interface="com.savoir.apache.karaf.ai.gateway.spi.ExecutorPlugin">
+        <service-properties>
+            <entry key="pluginType" value="slowlane"/>
+        </service-properties>
+    </service>
+    -->
+
 </blueprint>

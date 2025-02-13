@@ -45,6 +45,8 @@
         <argument ref="knowledgeBase"/>
     </bean>
 
+    <service ref="aiBean" interface="com.savoir.apache.karaf.ai.gateway.api.AIResource"/>
+
     <bean id="knowledgeBase"
           class="com.savoir.apache.karaf.ai.gateway.impl.AIKnowledgeBaseImpl"
           init-method="start"
