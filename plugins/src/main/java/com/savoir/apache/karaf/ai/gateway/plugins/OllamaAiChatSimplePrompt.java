@@ -34,9 +34,11 @@ public class OllamaAiChatSimplePrompt implements ExecutorPlugin {
 //----------------------------------------------------------------------------------------------------------------------
 
     public OllamaAiChatSimplePrompt(String modelName, String baseUrl) {
+        this.modelName = modelName;
+        this.baseUrl = baseUrl;
         model = OllamaChatModel.builder()
-                .baseUrl(baseUrl)
-                .modelName(modelName)
+                .baseUrl(this.baseUrl)
+                .modelName(this.modelName)
                 .temperature(0.8)
                 .timeout(Duration.ofSeconds(60))
                 .build();

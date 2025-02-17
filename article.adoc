@@ -146,27 +146,28 @@ This will result in a reactor summary similar to below:
 [,bash,linenum]
 ----
 [INFO] ------------------------------------------------------------------------
-[INFO] Reactor Summary for Apache-Karaf-LangChain4J-AI-DEMO 1.0.0-SNAPSHOT:
+[INFO] Reactor Summary for Apache-Karaf-LangChain4J-AI-DEMO 2.0.0-SNAPSHOT:
 [INFO]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO ................... SUCCESS [  0.156 s]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: api ............ SUCCESS [  0.937 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO ................... SUCCESS [  0.378 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: api ............ SUCCESS [  3.224 s]
 [INFO] Apache-Karaf-LangChain4J-AI-DEMO :: spi ............ SUCCESS [  0.151 s]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: plugins ........ SUCCESS [  6.403 s]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: impl ........... SUCCESS [  0.217 s]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-features-file SUCCESS [  0.051 s]
-[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-feature-project-itests SUCCESS [ 36.615 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: plugins ........ SUCCESS [  6.576 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: impl ........... SUCCESS [  0.254 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: command ........ SUCCESS [  0.208 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-features-file SUCCESS [  0.229 s]
+[INFO] Apache-Karaf-LangChain4J-AI-DEMO :: karaf-feature-project-itests SUCCESS [ 39.089 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  44.917 s
-[INFO] Finished at: 2024-09-01T15:36:23-02:30
+[INFO] Total time:  50.563 s
+[INFO] Finished at: 2025-02-17T06:15:05-03:30
 [INFO] ------------------------------------------------------------------------
 ----
 
 === Installation:
 [,bash,linenum]
 ----
-feature:repo-add mvn:com.savoir/application-features-file/1.0.0-SNAPSHOT/xml/features
+feature:repo-add mvn:com.savoir/application-features-file/2.0.0-SNAPSHOT/xml/features
 feature:install application-all-demo
 ----
 
@@ -178,16 +179,22 @@ karaf@root()> list
 START LEVEL 100 , List Threshold: 50
  ID │ State  │ Lvl │ Version        │ Name
 ────┼────────┼─────┼────────────────┼────────────────────────────────────────────────────────────────────────────────────
- 33 │ Active │  80 │ 4.4.6          │ Apache Karaf :: OSGi Services :: Event
-106 │ Active │  85 │ 1.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: api
-107 │ Active │  85 │ 1.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: impl
-108 │ Active │  85 │ 1.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: plugins
-109 │ Active │  85 │ 1.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: spi
-110 │ Active │  80 │ 2.10.1         │ Gson
-111 │ Active │  80 │ 18.0.0         │ Guava: Google Core Libraries for Java
-112 │ Active │  80 │ 1.1.0          │ SavoirTech :: Eos :: Core
-120 │ Active │  80 │ 3.4.0          │ Apache Commons Lang
-128 │ Active │  80 │ 0              │ wrap_file__Users_jgoodyear_.m2_repository_com_knuddels_jtokkit_1.1.0_jtokkit-1.1.0.jar
+ 33 │ Active │  80 │ 4.4.7          │ Apache Karaf :: OSGi Services :: Event
+106 │ Active │  85 │ 2.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: api
+107 │ Active │  85 │ 2.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: command
+108 │ Active │  85 │ 2.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: impl
+109 │ Active │  85 │ 2.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: plugins
+110 │ Active │  85 │ 2.0.0.SNAPSHOT │ Apache-Karaf-LangChain4J-AI-DEMO :: spi
+111 │ Active │  80 │ 2.18.0         │ Jackson-annotations
+112 │ Active │  80 │ 2.18.0         │ Jackson-core
+113 │ Active │  80 │ 2.18.0         │ jackson-databind
+114 │ Active │  80 │ 2.18.0         │ Jackson-JAXRS: base
+115 │ Active │  80 │ 2.18.0         │ Jackson-JAXRS: JSON
+116 │ Active │  80 │ 2.10.1         │ Gson
+117 │ Active │  80 │ 18.0.0         │ Guava: Google Core Libraries for Java
+118 │ Active │  80 │ 1.1.0          │ SavoirTech :: Eos :: Core
+126 │ Active │  80 │ 3.4.0          │ Apache Commons Lang
+134 │ Active │  80 │ 0              │ wrap_file__Users_jgoodyear_.m2_repository_com_knuddels_jtokkit_1.1.0_jtokkit-1.1.0.jar
 karaf@root()>
 ----
 
@@ -232,7 +239,7 @@ curl --location --request POST 'http://0.0.0.0:8181/cxf/ai' \
 --data-raw '
 {
   "id": 1234567890,
-  "plugin": "openAiChatSimplePrompt",
+  "plugin": "openai",
   "prompt": "Tell a joke about Java."
 }'
 ----
@@ -264,4 +271,4 @@ Please do not hesitate to reach out with questions and comments, here on the Blo
 
 Thank you to the Apache Karaf, and LangChain4J communities.
 
-(c) 2024 Savoir Technologies
+(c) 2025 Savoir Technologies
