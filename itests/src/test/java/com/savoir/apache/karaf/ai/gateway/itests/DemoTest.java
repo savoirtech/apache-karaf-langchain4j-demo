@@ -30,7 +30,7 @@ public class DemoTest extends KarafTestSupport {
 
     @Test
     public void demoAvailable() throws Exception {
-        addFeaturesRepository("mvn:com.savoir/application-features-file/1.0.0-SNAPSHOT/xml/features");
+        addFeaturesRepository("mvn:com.savoir/application-features-file/2.0.0-SNAPSHOT/xml/features");
 
         installAndAssertFeature("application-all-demo");
 
